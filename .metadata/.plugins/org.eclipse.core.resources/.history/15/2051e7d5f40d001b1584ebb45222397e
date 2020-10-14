@@ -1,0 +1,32 @@
+package game;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class testCell {
+
+	@Test
+	public void testClear() {
+		Cell cell = new Cell(1, 1);
+		assert( cell.getContent() == Seed.EMPTY);
+	}
+
+	@Test
+	public void testGetContent() {
+		Cell cell = new Cell(1, 1);
+		assert( cell.getContent() == Seed.EMPTY);
+	}
+
+	@Test
+	public void testSetContent() {
+		Cell cell = new Cell(1, 1);
+		assert( cell.getContent() == Seed.EMPTY);
+	}
+
+	@Test
+	public void testPaint() {
+		fail("Not yet implemented");
+	}
+
+}

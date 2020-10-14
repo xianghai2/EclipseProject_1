@@ -1,0 +1,75 @@
+package game;
+
+public class Board {
+
+	public static final int ROWS = 3;
+	public static final int COLS = 3;
+
+	Cell[][] cells;  
+	int currentRow, currentCol;  
+
+	// initialize the  board 
+	public Board() {
+		cells = new Cell[ROWS][COLS];  
+		for (int row = 0; row < ROWS; ++row) {
+			for (int col = 0; col < COLS; ++col) {
+				cells[row][col] = new Cell(row, col); 
+			}
+		}
+	}
+
+	// Initialize (or re-initialize) the game board 
+	public void init() {
+		for (int row = 0; row < ROWS; ++row) {
+			for (int col = 0; col < COLS; ++col) {
+				cells[row][col].clear();  // clear the cell 
+			}
+		}
+	}
+
+	
+	public boolean isDraw() {
+		for (int row = 0; row < ROWS; ++row) {
+			for (int col = 0; col < COLS; ++col) {
+				if (cells[row][col].content == Seed.EMPTY) {
+					return false; // not a draw
+				}
+			}
+		}
+		return true; // a draw
+	}
+
+	// Return true if the current player has won after placing at (currentRow, currentCol) 
+	public boolean hasWon(Seed seed) {
+		return (cells[currentRow][0].content == seed && cells[currentRow][1].content == seed && cells[currentRow][2].content == seed       // 3-in-the-row
+				|| cells[0][currentCol].content == seed  && cells[1][currentCol].content == seed && cells[2][currentCol].content == seed   // 3-in-the-column
+				|| currentRow == currentCol  && cells[0][0].content == seed && cells[1][1].content == seed  && cells[2][2].content == seed      // 3-in-the-diagonal				
+				|| currentRow + currentCol == 2 && cells[0][2].content == seed && cells[1][1].content == seed && cells[2][0].content == seed  // 3-in-the-opposite-diagonal			
+				
+				);
+	}
+	
+	public void setBoardCellContent(int row, int col, Seed seed) {
+		this.cells[row][col].setContent(seed);
+		this.currentRow = row;
+		this.currentCol = col;
+	}
+	
+	public Seed getCellContent(int row, int col) {
+		return this.cells[row][col].getContent();
+	}
+
+	// Paint board 
+	public void paint() {
+		for (int row = 0; row < ROWS; ++row) {
+			for (int col = 0; col < COLS; ++col) {
+				cells[row][col].paint();   // paint each cell 
+				if (col < COLS - 1) System.out.print("|");
+			}
+			System.out.println();
+			if (row < ROWS - 1) {
+				System.out.println("-----------");
+			}
+		}
+	}
+}

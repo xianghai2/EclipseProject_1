@@ -1,0 +1,39 @@
+package game;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class testCell {
+
+	@Test
+	public void testClear() {
+		System.out.println("test Cell clear()");
+		Cell cell = new Cell(1, 1);
+		assert( cell.getContent() == Seed.EMPTY);
+	}
+
+	@Test
+	public void testGetContent() {
+		System.out.println("test Cell getContent()");
+		Cell cell = new Cell(1, 1);
+		cell.setContent(Seed.CROSS);
+		assert( cell.getContent() == Seed.CROSS);
+	}
+
+	@Test
+	public void testSetContent() {
+		System.out.println("test Cell setContent()");
+		Cell cell = new Cell(1, 1);
+		cell.setContent(Seed.CIRCLE);
+		assert( cell.getContent() == Seed.CIRCLE);
+	}
+
+	@Test
+	public void testPaint() {
+		System.out.println("test Cell Paint()");
+		Cell cell = new Cell(1, 1);
+		cell.paint();
+	}
+
+}

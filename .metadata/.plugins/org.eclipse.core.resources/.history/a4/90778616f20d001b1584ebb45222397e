@@ -1,0 +1,39 @@
+package game;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class testBoard {
+
+	@Test
+	public void testInit() {
+		System.out.println("test init()");
+	}
+
+	@Test
+	public void testIsDraw() {
+		System.out.println("test draw()");
+	}
+
+	@Test
+	public void testHasWon() {
+		System.out.println("test HasWon()");
+	}
+
+	@Test
+	public void testPaint() {
+		System.out.println("test Paint()");
+	}
+	
+	@Test
+	public void testSetCellContent() {
+		System.out.println("test setCellContent()");
+		Board board = new Board();
+		board.init();  
+		board.setCellContent(1, 1, Seed.CIRCLE);
+		
+		board.getCellContent(1,1) == Seed.CIRCLE;
+	}
+
+}

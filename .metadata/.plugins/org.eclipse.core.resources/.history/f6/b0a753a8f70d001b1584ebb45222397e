@@ -1,0 +1,37 @@
+package game;
+
+import static org.junit.Assert.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+import org.junit.Test;
+
+public class testGameController {
+
+	@Test
+	public void testGameLoop() {
+		String data = "Alice\r\n2 2\r\n1 2\r\n1 1\r\n3 2\r\n3 3\r\n";
+		InputStream stdin = System.in;
+		OutputStream stdout = System.out;
+		try {
+		  System.setIn(new ByteArrayInputStream(data.getBytes()));
+		  Scanner scanner = new Scanner(System.in);
+		  ByteArrayOutputStream testOut = new ByteArrayOutputStream();
+	      System.setOut(new PrintStream(testOut));
+		  //System.out.println(scanner.nextLine());
+		  
+		  GameController gameController = new GameController();
+		  gameController.GameLoop();
+		  
+		} finally {
+		  System.setIn(stdin);
+		  System.setIn(stdin);
+		}
+	}
+
+}

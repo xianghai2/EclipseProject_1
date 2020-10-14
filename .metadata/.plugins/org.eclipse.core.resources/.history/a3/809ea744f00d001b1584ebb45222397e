@@ -1,0 +1,29 @@
+package game;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class testBoard {
+
+	@Test
+	public void testInit() {
+		System.out.println("test init()");
+	}
+
+	@Test
+	public void testIsDraw() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testHasWon() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPaint() {
+		fail("Not yet implemented");
+	}
+
+}

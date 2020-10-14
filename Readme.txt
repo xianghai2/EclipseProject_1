@@ -1,0 +1,2 @@
+cd game/target/
+java -jar game-0.0.1-SNAPSHOT-jar-with-dependencies.jar
